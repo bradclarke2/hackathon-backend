@@ -39,19 +39,12 @@ public class BasketService {
 
     public Score getBasketScore(String basketId) {
         Basket basket = basketRepository.findById(basketId).get();
-        return getAverageScoreOfBasket(basket);
-    }
 
+            Double sum = basket.getProductList().stream()
+                    .mapToInt(ean -> productService.getProductScore(ean).getValue())
+                    .average()
+                    .getAsDouble();
 
-
-    private Score getAverageScoreOfBasket(Basket basket) {
-        int totalScore = 0;
-        for (String ean: basket.getProductList()) {
-            totalScore += productService.getProductScore(ean).getValue();
-        }
-
-        int averageScore = totalScore / basket.getProductList().size();
-
-        return new Score(averageScore);
+        return new Score(sum.intValue());
     }
 }
