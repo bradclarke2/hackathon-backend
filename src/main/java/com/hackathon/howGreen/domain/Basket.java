@@ -22,4 +22,8 @@ public class Basket {
     public List<String> getProductList() {
         return productList;
     }
+
+    public void add(String ean) {
+        this.productList.add(ean);
+    }
 }
