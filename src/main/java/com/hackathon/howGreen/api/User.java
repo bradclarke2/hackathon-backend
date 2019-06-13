@@ -3,6 +3,7 @@ package com.hackathon.howGreen.api;
 import com.hackathon.howGreen.domain.Customer;
 import com.hackathon.howGreen.domain.Score;
 import com.hackathon.howGreen.repository.CustomerRepository;
+import com.hackathon.howGreen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,9 @@ public class User {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -31,6 +35,6 @@ public class User {
 
     @GetMapping("/score")
     public Score getScore(){
-        return customerRepository.findById("1234").get().getOverallScore();
+        return userService.getOverallScore();
     }
 }
