@@ -32,4 +32,9 @@ public class BasketController {
     public Score getBasketScore(@PathVariable("basketId") String basketId){
         return basketService.getBasketScore(basketId);
     }
+
+    @PutMapping("{basketId}/complete")
+    public void completeBasket(@PathVariable("basketId") String basketId){
+        basketService.completeBasket(basketId);
+    }
 }

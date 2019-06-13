@@ -47,4 +47,10 @@ public class BasketService {
 
         return new Score(sum.intValue());
     }
+
+    public void completeBasket(String basketId) {
+        Basket basket = basketRepository.findById(basketId).get();
+        basket.setCompleted(true);
+        basketRepository.save(basket);
+    }
 }
