@@ -20,4 +20,8 @@ public class BasketService {
         basketRepository.save(basket);
         return basket;
     }
+
+    public Basket viewBasket(String basketid) {
+        return basketRepository.findById(basketid).get();
+    }
 }
