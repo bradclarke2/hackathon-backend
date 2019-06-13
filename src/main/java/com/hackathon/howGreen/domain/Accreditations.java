@@ -1,5 +1,7 @@
 package com.hackathon.howGreen.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class Accreditations {
         return marineStewardshipCouncil;
     }
 
+    @JsonIgnore
     public ArrayList<Object> getAccreditationsAsList(){
         ArrayList<Object> list = new ArrayList<>();
         list.add(rainforestAlliance);

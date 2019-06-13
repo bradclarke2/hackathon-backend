@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class Product {
@@ -19,11 +21,15 @@ public class Product {
     @GetMapping("/checkItem/{EAN}")
     public ProductInformation getProductInformation(@PathVariable("EAN") String ean){
         return productService.getProductInformation(ean);
-
     }
 
     @GetMapping("/checkItem/{EAN}/score")
     public Score getProductScore(@PathVariable("EAN") String ean){
         return productService.getProductScore(ean);
+    }
+
+    @GetMapping("/{EAN}/alternatives")
+    public List<ProductInformation> getAlternatives(@PathVariable("EAN") String ean){
+        return productService.getAlternatives(ean);
     }
 }
