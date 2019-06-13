@@ -1,6 +1,5 @@
 package com.hackathon.howGreen.service;
 
-import com.hackathon.howGreen.domain.Accreditations;
 import com.hackathon.howGreen.domain.GreenInformation;
 import com.hackathon.howGreen.domain.Score;
 import org.springframework.stereotype.Service;
