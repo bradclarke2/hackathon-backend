@@ -31,4 +31,8 @@ public class GreenInformation {
     public Score getProductScore() {
         return productScore;
     }
+
+    public void setProductScore(Score productScore) {
+        this.productScore = productScore;
+    }
 }

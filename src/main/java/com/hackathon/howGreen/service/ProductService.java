@@ -1,5 +1,6 @@
 package com.hackathon.howGreen.service;
 
+import com.hackathon.howGreen.domain.GreenInformation;
 import com.hackathon.howGreen.domain.ProductInformation;
 import com.hackathon.howGreen.domain.Score;
 import com.hackathon.howGreen.repository.ProductRepository;
@@ -13,10 +14,18 @@ public class ProductService {
     ProductRepository productRepository;
 
     public Score getProductScore(String ean) {
-        return productRepository.findById(ean).get().getGreenInformation().getProductScore();
+        GreenInformation greenInformation = productRepository.findById(ean).get().getGreenInformation();
+        return calculateScore(greenInformation);
     }
 
     public ProductInformation getProductInformation(String ean) {
-        return productRepository.findById(ean).get();
+        ProductInformation productInformation = productRepository.findById(ean).get();
+        productInformation.getGreenInformation().setProductScore(getProductScore(ean));
+        return productInformation;
+    }
+
+    private Score calculateScore(GreenInformation greenInformation){
+        //TODO add model for calculation here
+        return new Score(10);
     }
 }
