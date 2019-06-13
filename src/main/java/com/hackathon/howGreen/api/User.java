@@ -1,6 +1,7 @@
 package com.hackathon.howGreen.api;
 
 import com.hackathon.howGreen.domain.Customer;
+import com.hackathon.howGreen.domain.Score;
 import com.hackathon.howGreen.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +27,10 @@ public class User {
     @PostMapping
     public void createUser(@RequestBody Customer customer){
         customerRepository.save(customer);
+    }
+
+    @GetMapping("/score")
+    public Score getScore(){
+        return customerRepository.findById("1234").get().getOverallScore();
     }
 }
