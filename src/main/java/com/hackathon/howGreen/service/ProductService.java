@@ -7,25 +7,25 @@ import com.hackathon.howGreen.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class ProductService {
 
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    CalculationService calculationService;
+
     public Score getProductScore(String ean) {
         GreenInformation greenInformation = productRepository.findById(ean).get().getGreenInformation();
-        return calculateScore(greenInformation);
+        return calculationService.calculateScore(greenInformation);
     }
 
     public ProductInformation getProductInformation(String ean) {
         ProductInformation productInformation = productRepository.findById(ean).get();
         productInformation.getGreenInformation().setProductScore(getProductScore(ean));
         return productInformation;
-    }
-
-    private Score calculateScore(GreenInformation greenInformation){
-        //TODO add model for calculation here
-        return new Score(10);
     }
 }

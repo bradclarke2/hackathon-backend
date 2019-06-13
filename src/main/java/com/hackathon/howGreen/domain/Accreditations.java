@@ -1,5 +1,8 @@
 package com.hackathon.howGreen.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Accreditations {
     private Boolean rainforestAlliance;
     private Boolean fairTrade;
@@ -24,5 +27,13 @@ public class Accreditations {
 
     public Boolean getMarineStewardshipCouncil() {
         return marineStewardshipCouncil;
+    }
+
+    public ArrayList<Object> getAccreditationsAsList(){
+        ArrayList<Object> list = new ArrayList<>();
+        list.add(rainforestAlliance);
+        list.add(fairTrade);
+        list.add(marineStewardshipCouncil);
+        return list;
     }
 }
