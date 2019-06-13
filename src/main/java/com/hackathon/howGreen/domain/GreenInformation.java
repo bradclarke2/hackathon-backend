@@ -1,13 +1,16 @@
 package com.hackathon.howGreen.domain;
 
 public class GreenInformation {
-    private boolean isRecyclable;
+    private Score productScore;
 
-    public GreenInformation(boolean isRecyclable) {
-        this.isRecyclable = isRecyclable;
+    public GreenInformation() {
     }
 
-    public boolean isRecyclable() {
-        return isRecyclable;
+    public GreenInformation(Score productScore) {
+        this.productScore = productScore;
+    }
+
+    public Score getProductScore() {
+        return productScore;
     }
 }
