@@ -5,16 +5,25 @@ import org.springframework.data.annotation.Id;
 public class ProductInformation {
     @Id private String ean;
     private GreenInformation greenInformation;
+    private double price;
 
-    public ProductInformation(String ean, GreenInformation greenInformation) {
+    public ProductInformation() {
+    }
+
+    public ProductInformation(String ean, GreenInformation greenInformation, double price) {
         this.ean = ean;
         this.greenInformation = greenInformation;
+        this.price = price;
     }
+    public GreenInformation getGreenInformation() {
+        return greenInformation;
+    }
+
     public String getEan() {
         return ean;
     }
 
-    public GreenInformation getGreenInformation() {
-        return greenInformation;
+    public double getPrice() {
+        return price;
     }
 }
