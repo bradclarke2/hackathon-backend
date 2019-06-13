@@ -1,5 +1,6 @@
 package com.hackathon.howGreen.api;
 
+import com.hackathon.howGreen.domain.ProductInformation;
 import com.hackathon.howGreen.domain.Score;
 import com.hackathon.howGreen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,12 @@ public class Product {
 
     @Autowired
     ProductService productService;
+
+    @GetMapping("/checkItem/{EAN}")
+    public ProductInformation getProductInformation(@PathVariable("EAN") String ean){
+        return productService.getProductInformation(ean);
+
+    }
 
     @GetMapping("/checkItem/{EAN}/score")
     public Score getProductScore(@PathVariable("EAN") String ean){

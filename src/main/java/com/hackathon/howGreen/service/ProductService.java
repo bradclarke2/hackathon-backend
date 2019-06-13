@@ -1,5 +1,6 @@
 package com.hackathon.howGreen.service;
 
+import com.hackathon.howGreen.domain.ProductInformation;
 import com.hackathon.howGreen.domain.Score;
 import com.hackathon.howGreen.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,5 +14,9 @@ public class ProductService {
 
     public Score getProductScore(String ean) {
         return productRepository.findById(ean).get().getGreenInformation().getProductScore();
+    }
+
+    public ProductInformation getProductInformation(String ean) {
+        return productRepository.findById(ean).get();
     }
 }
